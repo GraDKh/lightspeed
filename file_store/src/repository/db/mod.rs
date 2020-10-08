@@ -78,6 +78,12 @@ pub trait FileStoreDataRepository: Clone + Send + Sync {
         model: NewModel<FileStoreDataData>,
     ) -> Result<FileStoreDataModel, LightSpeedError>;
 
+    async fn update(
+        &self,
+        conn: &mut Self::Conn,
+        model: Model<FileStoreDataData>,
+    ) -> Result<FileStoreDataModel, LightSpeedError>;
+
     async fn delete_by_id(&self, conn: &mut Self::Conn, id: IdType)
         -> Result<u64, LightSpeedError>;
 }

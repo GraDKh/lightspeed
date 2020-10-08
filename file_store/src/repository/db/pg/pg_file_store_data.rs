@@ -96,6 +96,14 @@ impl FileStoreDataRepository for PgFileStoreDataRepository {
         Ok(self.repo.save(conn, model).await?)
     }
 
+    async fn update(
+        &self,
+        conn: &mut Self::Conn,
+        model: Model<FileStoreDataData>,
+    ) -> Result<FileStoreDataModel, LightSpeedError> {
+        Ok(self.repo.update(conn, model).await?)
+    }
+
     async fn delete_by_id(
         &self,
         conn: &mut Self::Conn,
